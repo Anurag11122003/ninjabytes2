@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #3498db; /* Set background color */
+      font-family: 'Arial', sans-serif;
+      color: #fff; /* Set text color */
+    }
+
+    #dice {
+      width: 100px;
+      height: 100px;
+      border: 2px solid #fff; /* Set border color */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 1s ease-in-out;
+      background-color: #e74c3c; /* Set default background color */
+    }
+
+    #dice.rolling {
+      animation: rollAnimation 1s ease-in-out;
+    }
+
+    @keyframes rollAnimation {
+      0% { transform: rotate(0deg); }
+      25% { transform: rotate(180deg); }
+      50% { transform: rotate(360deg); }
+      75% { transform: rotate(180deg); }
+      100% { transform: rotate(0deg); }
+    }
+  </style>
+  
+<link rel="stylesheet" type="text/css" href="styles.css">
+
+  <title>Dice Simulation</title>
+</head>
+<body>
+  <div id="dice" onclick="rollDice()">1</div>
+
+  <script>
+    function rollDice() {
+      const dice = document.getElementById('dice');
+      const randomValue = Math.floor(Math.random() * 6) + 1;
+
+      // Add animation class
+      dice.classList.add('rolling');
+
+      // Set new value after the animation duration
+      setTimeout(() => {
+        dice.textContent = randomValue;
+        dice.classList.remove('rolling');
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
